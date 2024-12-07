@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Likhr</title>
+<style>
+    input {
+        width: 70%;
+        padding: 4px;
+        font-size: 16px;
+    }
+    .output {
+        height: 300px;
+        width: 70%;
+        padding: 4px;
+        color: #FFFFFF;
+        background-color: #000000;
+        font-size: 16px;
+    }
+.btn {
+  border: none;
+  width: 13%;
+  color: #0D92F4;
+  background-color: #9DBDFF;
+  padding: 8px 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn:hover {
+  border: none;
+  width: 13%;
+  color: #F7EF08;
+  background-color: #0000FF;
+  padding: 8px 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.success {
+  color: green;
+}
+
+.success:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body onload="startTime()">
+<script>
+fixed_color0="#000000";
+fixed_color1="#FF0000";
+fixed_color2="#00FF00";
+fixed_color3="#0000FF";
+fixed_color4="#FF00FF";
+fixed_color5="#FFFFFF";
+fixed_color6="#FFFF00";
+fixed_color7="#00FFFF";
+fixed_color8="#FFAAFF";
+fixed_color9="#FFAAAA";
+fixed_color10="#FF0000";
+fixed_color11="#FF0000";
+fixed_color12="#FF0000";
+fixed_color13="#FF0000";
+fixed_color14="#FF0000";
+fixed_color15="#FF0000";
+</script>
+
+<div class="output" id="output" name="output" placeholder="random"><script>generateRandomLanguage();</script><br><br></div>
+
+<br>UTC
+<div id="txt11" style="float:center; padding: 40px"></div>
+
+<div height="20" id="funcs" name="funcs" placeholder="random"></div>
+
+
+
+<div height="20" id="inscription" name="inscription" placeholder="random"></div>
+
+<br>
+<input type="text" id="textInput" name="textInput" placeholder="Type here to run language function" style='border:5px dotted #FFFFFF; color:#66FF66; background-color:#000000;'>
+
+
+<script>
+stringarray= [];
+
+    for (var i = 0; i < 1000; i++) {
+stringarray.push(generateRandomLanguage());
+    }
+
+
+//document.getElementById("textInput").addEventListener("input", changeBackgroundColor);
+document.getElementById("textInput").addEventListener("keydown", (event) => changeDown(event));
+document.getElementById("textInput").addEventListener("keyup", changeUp);
+
+function changeUp() {
+//document.getElementById("output").innerHTML+=document.getElementById("textInput").value;
+//document.getElementById("output").innerHTML=document.getElementById("textInput").value;
+//document.getElementById("output").innerHTML+="<br>";
+changeBackgroundColor();
+
+}
+
+function changeDown(event) {
+
+if (event.key === 'Enter') {
+//document.getElementById("output").innerHTML+="<br>e";
+//document.getElementById("output").innerHTML="";
+//document.getElementById("textInput").innerHTML="";
+//clearcontent('textInput');
+document.getElementById("output").innerHTML+=document.getElementById("textInput").value + "<br>";
+document.getElementById("textInput").value="";
+changeBackgroundColor();
+
+        console.log('Enter key pressed!');
+        // Perform desired actions here
+      }
+
+}
+
+function changeBackgroundColor() {
+    //var randomColor1 = "#000000";
+    var randomColor0 = fixed_color0;
+    var randomColor1 = fixed_color1;
+    var randomColor2 = fixed_color2;
+    var randomColor3 = fixed_color3;
+    var randomColor4 = fixed_color4;
+    var randomColor5 = fixed_color5;
+    var randomColor6 = fixed_color6;
+    var randomColor7 = fixed_color7;
+    var randomColor8 = fixed_color8;
+    var randomColor9 = fixed_color9;
+    var randomColor10 = fixed_color10;
+//generateRandomColor();
+    //var randomColor2 = generateRandomColor();
+    //var randomColor3 = generateRandomColor();
+    //var randomColor4 = generateRandomColor();
+    //var randomColor5 = generateRandomColor();
+    //var randomColor6 = generateRandomColor();
+
+    var bc = [ randomColor0,
+    randomColor1,
+    randomColor2,
+    randomColor3,
+    randomColor4,
+    randomColor5 ];
+
+    document.getElementById("funcs").innerHTML = "[F01][F02][F03][F04][F05][F06][F07][F08][F09][F10][F11][F12][F13]";
+    document.getElementById("inscription").innerHTML = "";
+
+    for (var i = 0; i < 6; i++) {
+    document.getElementById("inscription").innerHTML += "<br>";
+    randex = Math.floor(Math.random() * 20)
+
+    document.getElementById("inscription").innerHTML += '<a href="https://www.google.com/search?q=' + stringarray[randex] + '"><input type="button" class="btn" value="View"></a>';
+    //document.getElementById("inscription").innerHTML += '<span style="color:' + bc[Math.floor(Math.random() * 5)]' + "background-color: inherit;'background-color:#FFFFFF " +>' + stringarray[randex] + '</span>';
+    document.getElementById("inscription").innerHTML += '<span style="color:' + bc[Math.floor(Math.random() * 4 + 1)] + '; background-color:' + bc[Math.floor(Math.random() * 2)] + ';">' + stringarray[randex] + '</span>';
+    //document.getElementById("inscription").innerHTML += stringarray[randex];
+    document.getElementById("inscription").innerHTML += '<a href="https://google.com"><span style="color:yellow; background-color: gray">[expand]</span></a>';
+
+    }
+
+}
+
+function generateRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function generateRandomString() {
+    var letters = 'abcdefghijklmnopqrstuvwxyz';
+    var gooby = '';
+
+    for (var i = 0; i < 16; i++) {
+        gooby += letters[Math.floor(Math.random() * 16)];
+    }
+    return gooby;
+}
+
+function generateRandomSyll() {
+    var letters = 'abcdefghijklmnopqrstuvwxyz';
+    var gooby = '';
+
+    for (var i = 0; i < (Math.floor(Math.random() * 10)+1); i++) {
+    //for (var i = 0; i < 10; i++) {
+        gooby += letters[Math.floor(Math.random() * 16)];
+        //gooby += "-";
+    }
+    gooby += "-";
+
+    return gooby;
+}
+
+function generateRandomLanguage() {
+    var parts = [ generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll(),
+    generateRandomSyll() ];
+
+    var gooby = '';
+
+    for (var i = 0; i < 10; i++) {
+        //gooby += parts[Math.floor(Math.random() * 6)] + "-";
+        gooby += parts[Math.floor(Math.random() * 3)];
+    }
+    return gooby;
+}
+
+function draw() {
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+
+    context.clearRect(0, 0, 500, 500);
+    showAxes(context);
+    context.save();            
+    
+    plotSine(context, step, 50);
+    context.restore();
+    
+    step += 4;
+    window.requestAnimationFrame(draw);
+}
+
+function startTime() {
+  const today = new Date();
+  //const today = new Date(1733513435);
+
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+
+  m = checkTime(m);
+  s = checkTime(s);
+
+  //document.getElementById('txt01').innerHTML =  h + ":" + m + ":" + s;
+
+  //zonetime = today.toLocaleString('en-US', { weekday: "short", day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit", timeZone: 'Pacific/Honolulu' }).replace(/,/,'')
+  zonetime = today.toLocaleString('en-US', { timeZone: 'UTC' })
+  document.getElementById('txt11').innerHTML =  zonetime;
+
+  //document.getElementById('txt03').innerHTML =  zonetime;
+
+//"textInput" name="textInput" placeholder="Type here to run language function" style='border:5px dotted #FFFFFF; color:#66FF66; background-color:#000000;'>
+//oldgradient=document.getElementById("textInput").style.background-color;
+newgradient=generateRandomColor();
+//document.getElementById("textInput").style.backgroundColor=newgradient;
+document.getElementById("textInput").style.border="5px dotted " + newgradient;
+document.getElementById("textInput").style.transition="border 0.5s";
+setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+
+
+
+</body>
+</html>
